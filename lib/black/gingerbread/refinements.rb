@@ -54,10 +54,10 @@ module Black
 
       refine Black::Object do
         def gingerbread_prepare_context(context)
-          context.count_object(self)
-
-          self.instance_variables.each do |variable|
-            self.instance_variable_get(variable).gingerbread_prepare_context(context)
+          if context.count_object(self) == 1
+            self.instance_variables.each do |variable|
+              self.instance_variable_get(variable).gingerbread_prepare_context(context)
+            end
           end
         end
 
