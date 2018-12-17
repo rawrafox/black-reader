@@ -305,8 +305,8 @@ module Black
         override_reader = reader.read_binary(override_length)
 
         {
-          name: override_reader.read_string_u32,
-          unknown: 9.times.map { override_reader.read_u32 }
+          "name" => override_reader.read_string_u32,
+          "unknown" => 9.times.map { override_reader.read_u32 }
         }
       end
     end

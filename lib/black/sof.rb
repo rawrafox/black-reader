@@ -496,7 +496,13 @@ module Black
       instance_count = reader.read_u32
       instance_length = reader.read_u16
 
-      instance_count.times.map { reader.read(instance_length) }
+      instance_count.times.map do
+        instance_reader = reader.read_binary(instance_length)
+
+        instance_reader.unknown! unless instance_length == 44
+
+        11.times.map { instance_reader.read_f32 }
+      end
     end
   end
   

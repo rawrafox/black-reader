@@ -1,5 +1,8 @@
 require "black/version"
 require "black/binary_reader"
+require "black/gingerbread"
+require "black/resource_manager"
+
 require "black/object"
 require "black/aud"
 require "black/eve"

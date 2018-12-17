@@ -1,9 +1,13 @@
 module Black
   class Object
+    def self.constructor_name
+      self.name.split("::").last
+    end
+
     def self.descendants
       @descendants ||= begin
         ObjectSpace.each_object(Class).select { |e| e < self }.map do |e|
-          [e.name.split("::").last, e]
+          [e.constructor_name, e]
         end.to_h
       end
     end
